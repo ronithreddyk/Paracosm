@@ -34,7 +34,7 @@ What if you woke up tomorrow and everyone remembered a version of you that never
 
 ![PARACOSM demo — one impossible question to a fully rendered alternate world](assets/paracosm-demo.gif)
 
-> **▶ [Watch in full quality with sound](assets/paracosm-demo.mp4)** — the same walkthrough in HD.
+> **▶ [Watch in full quality](assets/paracosm-demo.mp4)** — the same walkthrough in HD.
 
 <!--
   The GIF above plays automatically on GitHub — no click needed.
