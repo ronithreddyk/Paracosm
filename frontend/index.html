@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PARACOSM — Alternate Reality Simulator</title>
+  <meta name="description" content="PARACOSM opens a doorway into another version of reality. Ask one impossible question and watch a whole world unfold." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- ================= ATMOSPHERE ================= -->
+  <div class="sky" aria-hidden="true">
+    <div class="cloud-layer layer-far">
+      <span class="cloud c1"></span>
+      <span class="cloud c2"></span>
+      <span class="cloud c3"></span>
+    </div>
+    <div class="cloud-layer layer-near">
+      <span class="cloud c4"></span>
+      <span class="cloud c5"></span>
+    </div>
+    <div class="fog"></div>
+    <div class="grain"></div>
+    <div class="vignette"></div>
+  </div>
+
+  <!-- ================= HERO / LANDING ================= -->
+  <main class="stage">
+    <section class="hero" id="hero">
+      <p class="eyebrow">Alternate Reality Simulator</p>
+
+      <h1 class="logo" data-text="PARACOSM">
+        <span class="logo-ink">PARACOSM</span>
+      </h1>
+
+      <p class="tagline">
+        Every universe begins as a single impossible thought.
+        Ask your question — and step through the doorway.
+      </p>
+
+      <form class="console" id="form" autocomplete="off">
+        <div class="input-row">
+          <span class="prompt-glyph" aria-hidden="true">✳</span>
+          <input
+            id="prompt"
+            name="prompt"
+            maxlength="500"
+            placeholder="What if Earth had two moons?"
+            aria-label="Enter a what-if question"
+          />
+          <button class="submit" type="submit" aria-label="Generate reality">
+            <svg viewBox="0 0 24 24" fill="none" width="22" height="22">
+              <path d="M5 12h13M12 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+
+        <div class="suggestions" id="suggestions">
+          <button type="button">What if Messi became a cricketer?</button>
+          <button type="button">What if I moved to Tokyo?</button>
+          <button type="button">What if humans colonized Mars?</button>
+          <button type="button">What if Earth had two moons?</button>
+        </div>
+      </form>
+
+      <p class="status-error" id="error" role="alert"></p>
+      <p class="scroll-hint" id="scrollHint" hidden>The rift is open below ↓</p>
+    </section>
+  </main>
+
+  <!-- ================= RESULT ZONE ================= -->
+  <section class="result-zone" id="resultZone">
+
+    <!-- Loading -->
+    <div class="loading" id="loading" aria-live="polite">
+      <div class="rift">
+        <span class="ring r1"></span>
+        <span class="ring r2"></span>
+        <span class="ring r3"></span>
+        <span class="core"></span>
+      </div>
+      <h2 class="loading-title" id="loadingStage">Splitting the timeline</h2>
+      <p class="loading-sub" id="loadingSub">Holding your question steady while the world rearranges itself.</p>
+      <div class="loading-track"><span class="loading-fill" id="loadingFill"></span></div>
+    </div>
+
+    <!-- Result dossier -->
+    <article class="result" id="result">
+      <header class="result-head">
+        <span class="badge" id="probability">Probability</span>
+        <h2 class="reality-title" id="title"></h2>
+        <p class="divergence" id="divergence"></p>
+        <p class="summary" id="summary"></p>
+      </header>
+
+      <!-- Images -->
+      <div class="gallery" id="gallery">
+        <figure class="frame" data-index="0">
+          <div class="frame-img" id="img0"></div>
+          <figcaption><span class="cap-kicker">The moment reality changed</span><span class="cap-text" id="cap0"></span></figcaption>
+        </figure>
+        <figure class="frame" data-index="1">
+          <div class="frame-img" id="img1"></div>
+          <figcaption><span class="cap-kicker">Life inside the new reality</span><span class="cap-text" id="cap1"></span></figcaption>
+        </figure>
+        <figure class="frame" data-index="2">
+          <div class="frame-img" id="img2"></div>
+          <figcaption><span class="cap-kicker">The long-term consequence</span><span class="cap-text" id="cap2"></span></figcaption>
+        </figure>
+      </div>
+
+      <!-- Narration -->
+      <div class="narration-wrap">
+        <h3 class="section-label">The Narration</h3>
+        <div class="narration" id="narration"></div>
+      </div>
+
+      <!-- Timeline -->
+      <div class="timeline-wrap" id="timelineWrap">
+        <h3 class="section-label">Timeline of the Divergence</h3>
+        <ol class="timeline" id="timeline"></ol>
+      </div>
+
+      <!-- Alternate self -->
+      <div class="self-wrap" id="selfWrap">
+        <h3 class="section-label">Your Alternate Self</h3>
+        <div class="self-grid" id="selfGrid"></div>
+      </div>
+
+      <!-- World changes + consequences -->
+      <div class="cards-wrap">
+        <div class="cards-col">
+          <h3 class="section-label">How the World Changed</h3>
+          <div class="card-list" id="worldChanges"></div>
+        </div>
+        <div class="cards-col">
+          <h3 class="section-label">Long-Term Consequences</h3>
+          <div class="card-list" id="consequences"></div>
+        </div>
+      </div>
+
+      <footer class="result-foot">
+        <button type="button" class="again" id="again">Open another rift</button>
+      </footer>
+    </article>
+  </section>
+
+  <script src="js/api.js" defer></script>
+  <script src="js/narration.js" defer></script>
+  <script src="js/reality-view.js" defer></script>
+  <script src="js/app.js" defer></script>
+</body>
+</html>

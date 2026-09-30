@@ -1,0 +1,17 @@
+# secrets — never commit real keys
+backend/settings.env
+
+# python
+.venv/
+__pycache__/
+*.pyc
+
+# generated assets
+backend/generated-images/
+
+# os / editor
+.DS_Store
+
+# personal files — not part of the project
+RONITH_REDDY_Resume.docx
+KAYAK_Interview_Prep.md
